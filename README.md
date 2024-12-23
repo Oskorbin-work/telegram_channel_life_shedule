@@ -1,0 +1,1 @@
+This is a small project to add data from a Telegram channel to a Google Sheets.
