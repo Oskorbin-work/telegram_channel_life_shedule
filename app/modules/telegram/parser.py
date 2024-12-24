@@ -5,7 +5,6 @@ from telethon.tl.functions.messages import (GetHistoryRequest)
 import pytz
 from modules.telegram.config_data import api_id,api_hash,channel_username,username, start_date
 import json
-
 def get_current_UTC():
     kiev_timezone = pytz.timezone('Europe/Kyiv')
     current_utc = datetime.now(kiev_timezone).hour - datetime.now(pytz.utc).hour
@@ -29,12 +28,13 @@ def check_start_date(messages,end_date):
     return temp_list[::-1]
 
 def data_to_json(data):
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
+    with open('app/modules/data_handler/data.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f,indent=4, ensure_ascii=False)
 
 # Создаем клиент
 client = TelegramClient(username, api_id, api_hash)
 
+final = {}
 async def parser(start_datetime):
     days = datetime.now()-start_datetime
     for i in range(days.days):
@@ -53,9 +53,15 @@ async def parser(start_datetime):
         ))
         await client.disconnect()
         current_data = end_data.date()- timedelta(days=1)
+        #data_to_json(data)
         result = check_start_date(result.messages, end_data - timedelta(days=1))
-        for i in result:
-            print(i)
+        if result:
+            list_task = [{'time': task['time'], 'text': task['text']} for task in result]
+            final[str(current_data)] = list_task
+    data_to_json(final)
+
+
+
 
 
 
