@@ -1,13 +1,3 @@
-"""
-Как хранятся данные:
-1.	Если точка, то вывести предупреждение. Возможна ошибка.
-2.	Если внутри указано время, то точку искать не надо.+
-3.  Дела вместят в себе время выполнения и перерыв.
-4.  Сообщения может вмещать в себя не одно дело. А даже точку. +
-5. Точка может свое время выполнения.
-6. Дела могут повторяться и их надо суммировать
-7. Дело могут быть внутри другого дела.
-"""
 import json
 import re
 list_tasks = ["Сон","Гигиена утро","Тренировка","Мытье","Дела категории Б",
@@ -19,9 +9,9 @@ address_file = 'app/modules/data_handler/data.json'
 
 def data_to_json(data,date):
     """
-    output all data to json.
-    :param data: data all days
-    :return:
+    output data one day to json.
+    :param data: data day
+    :param date: date
     """
     with open(f'app/modules/google_sheets/data/{date}.json', 'w', encoding='utf-8') as f:
         json.dump(data, f,indent=4, ensure_ascii=False)
@@ -191,7 +181,7 @@ def handler():
             """for date, tasks in data.items():
                 for task in tasks:
                     print(f"  - Задача: {task['task']}, Время: {task['time']} часов")"""
-            data_to_json(data_one_day[date],date)
+            data_to_json(data_one_day,date)
 
         for date, tasks in dict_error.items():
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")

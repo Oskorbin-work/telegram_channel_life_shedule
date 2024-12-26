@@ -11,4 +11,5 @@ channel_username = config['telegram']['CHANNEL_NAME']
 username = config['telegram']['USERNAME']
 phone = config['telegram']['PHONE_NUM']
 
+# start date messages
 start_date = config['other']['START_DATE']
