@@ -1,0 +1,2 @@
+def writer():
+	print("hi")

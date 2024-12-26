@@ -81,10 +81,10 @@ async def parser(start_datetime):
         await client.start()
         result = await client(GetHistoryRequest(
             peer=channel_username,
-            offset_date=end_data,  # Начальная дата поиска
+            offset_date=end_data,  # end date search
             offset_id=0,
             add_offset=0,
-            limit=50,  # Количество сообщений за запрос
+            limit=50, 
             max_id=0,
             min_id=0,
             hash=0,
