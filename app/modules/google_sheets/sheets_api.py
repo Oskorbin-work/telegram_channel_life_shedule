@@ -5,7 +5,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from modules.google_sheets.google_workcloud.confid_data import PATH_TO_TOKEN, CLIENT, SCOPES
+from modules.google_sheets.google_workcloud.config_data import PATH_TO_TOKEN, CLIENT, SCOPES
 
 def api():
   creds = None
@@ -33,4 +33,3 @@ def api():
   except HttpError as err:
     print(err)
     return "error"
-
