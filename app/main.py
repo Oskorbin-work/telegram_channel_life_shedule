@@ -1,6 +1,6 @@
 from modules.telegram.parser import start_parser
 from modules.data_handler.handler import handler
-from modules.google_sheets.google_sheets_writer import writer
+from modules.google_sheets.writer import writer
 
 
 if __name__ == "__main__":

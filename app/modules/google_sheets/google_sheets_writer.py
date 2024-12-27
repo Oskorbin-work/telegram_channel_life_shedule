@@ -1,2 +1,0 @@
-def writer():
-	print("hi")
