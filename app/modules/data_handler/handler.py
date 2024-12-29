@@ -13,6 +13,7 @@ def data_to_json(data,date):
     :param data: data day
     :param date: date
     """
+    print(f"    {date}: Обработано")
     with open(f'app/modules/google_sheets/data/{date}.json', 'w', encoding='utf-8') as f:
         json.dump(data, f,indent=4, ensure_ascii=False)
 

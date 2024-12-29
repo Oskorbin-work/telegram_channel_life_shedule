@@ -77,6 +77,7 @@ def add_data_row(date, number_row,sheet,different_time):
 	sheet.values().update(
 		spreadsheetId=SAMPLE_SPREADSHEET_ID, range=range_put,
 		valueInputOption='USER_ENTERED', body=body).execute()
+	print(f"    {date}: Отправлено")
 
 
 

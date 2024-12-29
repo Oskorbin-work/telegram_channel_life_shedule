@@ -51,6 +51,7 @@ def check_start_date(messages,end_date):
         if end_date.date() ==message.date.date():
             date_day = format_date(message.date + get_current_UTC())
             temp_list.append({"time":date_day, "text":message.message})
+
         elif end_date.date() >message.date.date():
             return temp_list[::-1]
     return temp_list[::-1]
@@ -96,6 +97,7 @@ async def parser(start_datetime):
         if result:
             list_task = [{'time': task['time'], 'text': normalize_text(task['text'])} for task in result]
             final[str(current_data)] = list_task
+            print(f"    {current_data}: Взято")
     data_to_json(final)
 
 
