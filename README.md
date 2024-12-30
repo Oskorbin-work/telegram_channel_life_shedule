@@ -11,13 +11,16 @@
 * [Screenshots](#screenshots)
 
 ## General info
-
-*  
-* 
+* I made this project to automate data migration from Telegram to Google Sheets.
+* **Data Description:**
+* I made notes of all my tasks in a Telegram channel, and then I transferred those notes to Google Sheets.
 	
 ## Technologies
 Project is created with:
-
+1. Telethon
+2. Google api
+3. json
+4. configparser
 
 <details><summary>Other Technologies (CLICK ME)</summary>
 <ul>
