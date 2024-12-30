@@ -9,6 +9,13 @@ import json
 directory_json = "app/modules/google_sheets/data"
 
 def get_row_data(directory,date):
+	"""
+	match data json
+	:param directory: path to json
+	:param date: current date
+	:return:
+	Completed dict
+	"""
 	row_tasks = {
 		"Сон":0.0,
 		"Гигиена утро": 0.0,
@@ -52,8 +59,15 @@ def get_row_data(directory,date):
 	return row_tasks
 
 
-# AB это колонка ПОЛЕЗНЫЕ ДЕЛА
+# different_time это колонка ПОЛЕЗНЫЕ ДЕЛА
 def add_data_row(date, number_row,sheet,different_time):
+	"""
+	push data to google sheet
+	:param date: date
+	:param number_row: row with date in google sheets
+	:param sheet: name sheet
+	:param different_time: it column "Полезные дела"
+	"""
 	try:
 		row_data = get_row_data(directory_json,date)
 	except:
@@ -82,14 +96,16 @@ def add_data_row(date, number_row,sheet,different_time):
 
 
 def row_index(values, name,sheet):
-	"""Возвращает индекс первого элемента в списке, начинающегося со строки name.
-
-	Args:
-	values: Список списков.
-	name: Строка для поиска в качестве первого элемента вложенных списков.
-	Returns:
-	Индекс первого найденного элемента или None, если элемент не найден.
 	"""
+	 Finds the index of the first sublist that starts with the given name.
+
+	 Args:
+	     values: A list of lists.
+	     name: The string to search for as the first element of sublists.
+
+	 Returns:
+	     The index of the first found element or None if no element is found.
+	 """
 	for index, value in enumerate(values):
 		if value[0] == str(name):
 			# value[31] это колонка ПОЛЕЗНЫЕ ДЕЛА
@@ -102,14 +118,14 @@ def row_index(values, name,sheet):
 
 def find_json_files(directory):
 	"""
-	  Функция для поиска всех JSON файлов в указанной директории.
+	Finds all JSON files in the specified directory and its subdirectories.
 
-	  Args:
-	    directory: Путь к директории для поиска.
+	Args:
+	  directory: The path to the directory to search.
 
-	  Returns:
-	    Список имен найденных JSON файлов.
-	  """
+	Returns:
+	  A list of the names of the found JSON files.
+	"""
 	json_files = []
 	for root, dirs, files in os.walk(directory):
 		for file in files:
@@ -118,6 +134,11 @@ def find_json_files(directory):
 		return json_files
 
 def sheet_data(service,json_files):
+	"""
+	get all cells sheet and start other
+	:param service: API google
+	:param json_files: get all json with dates
+	"""
 	sheet = service.spreadsheets()
 	result = (
 		sheet.values()
@@ -137,6 +158,9 @@ def sheet_data(service,json_files):
 		row_index(values, name,sheet)
 
 def writer():
+	"""
+	start writer data to google sheets
+	"""
 	json_files = find_json_files(directory_json)
 	if not json_files:
 		print("JSON файлы не найдены.")

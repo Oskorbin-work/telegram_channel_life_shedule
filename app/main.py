@@ -50,7 +50,6 @@ if __name__ == "__main__":
         print_color("       Обработчик – ок","green")
     print_color("Отправка данных в Google Sheets...","cyan")
     try:
-        # Добавь тут удаление файлов из app/modules/google_sheets/data
         writer()
     except:
         print_color("Отправить данные в гугл таблицу не получилось...","red")
