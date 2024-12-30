@@ -10,7 +10,7 @@
 * [Project Status](#project-Status)
 
 ## General info
-* I made this project to automate data migration from Telegram to Google Sheets.
+* I made this project to automate data transfer from Telegram to Google Sheets.
 * **Data Description:**
 * I made notes of all my tasks in a Telegram channel, and then I transferred those notes to Google Sheets.
 	
