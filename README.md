@@ -12,7 +12,7 @@
 ## General info
 * I made this project to automate data transfer from Telegram to Google Sheets.
 * **Data Description:**
-* I made notes of all my tasks in a Telegram channel, and then I transferred those notes to Google Sheets.
+* I made notes of all my daily routine in a Telegram channel, and then I transferred those notes to Google Sheets.
 	
 ## Technologies
 Project is created with:
